@@ -67,3 +67,10 @@ def predict_risk(request: PredictionRequest):
         
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+
+if __name__ == "__main__":
+    import uvicorn
+    import os
+    # Render provides the PORT environment variable. If not found, default to 10000.
+    port = int(os.environ.get("PORT", 10000))
+    uvicorn.run("app:app", host="0.0.0.0", port=port)
